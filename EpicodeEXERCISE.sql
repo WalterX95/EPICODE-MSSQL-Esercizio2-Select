@@ -27,5 +27,17 @@ USE Giorno2DB;
 
 --7) Numero totale di clienti raggruppati per città di appartenenza
 
-SELECT CustomerID, SUM(Freight) as TotaleSpeseTrasporto FROM Orders
-Group By CustomerID, ShipCountry;
+--SELECT CustomerID FROM Orders
+--Group By CustomerID, ShipCountry;
+
+--8) Totale di UnitPrice * Quantity raggruppato per ogni ordine
+
+SELECT OrderID, SUM(UnitPrice * Quantity) AS TotalPrice
+FROM [Order Details]
+GROUP BY OrderID;
+
+--9) Totale di UnitPrice * Quantity solo dell'ordine con id=10248
+
+SELECT SUM(UnitPrice * Quantity) AS TotalPrice
+FROM [Order Details]
+WHERE OrderID = 10248;
